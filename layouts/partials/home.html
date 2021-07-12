@@ -1,16 +1,18 @@
-<h1 class="title">
-    Recipes
-</h1>
-<div class="recipe-grid">
-    {{ range sort (where .Site.RegularPages "Section" "recipes") "Title" }}
-        <div class="recipe-grid-item">
-            <a class="block relative bg-blue" href="{{ .RelPermalink }}">
-                <h3>{{ .Title }}</h3>
-                {{ if .Params.Image }}
-                    <img src="{{.Permalink}}{{ .Params.Image }}" />
-                {{ end }}
-            </a>
-      </div>
-    {{ end }}
+<section>
+    <h1 class="title">
+        Recipes
+    </h1>
+    <div class="recipe-grid">
+        {{ range sort (where .Site.RegularPages "Section" "recipes") "Title" }}
+            <div class="recipe-grid-item">
+                <a class="block relative bg-blue" href="{{ .RelPermalink }}">
+                    <h3>{{ .Title }}</h3>
+                    {{ if .Params.Image }}
+                        <img src="{{.Permalink}}{{ .Params.Image }}" />
+                    {{ end }}
+                </a>
+          </div>
+        {{ end }}
+        </div>
     </div>
-</div>
+</section>
