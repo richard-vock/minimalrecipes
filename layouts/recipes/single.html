@@ -1,0 +1,133 @@
+{{ define "title" }}
+  {{ .Title }} · {{ .Site.Title }}
+{{ end }}
+{{ define "content" }}
+
+<div class="recipe-heading">
+    <h1>{{ .Title }}</h1>
+</div>
+
+{{ with .Params.Image }}
+<img class="recipe-image" src="{{ . }}" />
+{{ end }}
+
+<section class="recipe-notes">
+    {{ .Content }}
+</section>
+
+<section class="recipe-parameters">
+    <ul>
+        {{ with .Params.yield }}
+            <li>
+                <span class="recipe-parameter">
+                    {{ i18n "yields" }}:
+                </span>
+                <span class="recipe-value">
+                    {{ . }}
+                </span>
+            </li>
+        {{ end }}
+        {{ with .Params.prepTime }}
+            <li>
+                <span class="recipe-parameter">
+                    {{ i18n "prepTime" }}:
+                </span>
+                <span class="recipe-value">
+                    {{ . }}
+                </span>
+            </li>
+        {{ end }}
+        {{ with .Params.cookTime }}
+            <li>
+                <span class="recipe-parameter">
+                    {{ i18n "cookTime" }}:
+                </span>
+                <span class="recipe-value">
+                    {{ . }}
+                </span>
+            </li>
+       {{ end }}
+    </ul>
+</section>
+
+{{ with .Params.Ingredients }}
+    <div class="recipe-heading">
+        <h2>{{ i18n "ingredients" }}</h2>
+    </div>
+    <section class="recipe-ingredients">
+        <ul>
+            {{ range . }}
+                <li><span>
+                    {{ . | markdownify }}
+                </span></li>
+            {{ end }}
+        </ul>
+    </section>
+{{ end }}
+
+{{ with .Params.Directions }}
+    <div class="recipe-heading">
+        <h2>{{ i18n "steps" }}</h2>
+    </div>
+    <section class="recipe-directions">
+        <ol>
+            {{ range . }}
+                <li><span>
+                    {{ . | markdownify }}
+                </span></li>
+            {{ end }}
+        </ol>
+    </section>
+{{ end }}
+
+<section class="recipe-meta">
+    <ul>
+        {{ with .Params.Category }}
+            <li>
+                <span class="recipe-parameter">
+                    {{ i18n "category"}}:
+                </span>
+                <span class="recipe-value">
+                    <a href="{{ ( printf "category/%s/" ( . | urlize ) ) | relLangURL }}">
+                        {{ . | humanize }}
+                    </a>
+                </span>
+            </li>
+        {{ end }}
+        {{ with .Params.Cuisine }}
+            <li>
+                <span class="recipe-parameter">
+                    {{ i18n "cuisine"}}:
+                </span>
+                <span class="recipe-value">
+                    <a href="{{ ( printf "cuisine/%s/" ( . | urlize ) ) | relLangURL }}">
+                        {{ . | humanize }}
+                    </a>
+                </span>
+            </li>
+        {{ end }}
+        {{ with .Params.Tags }}
+            <li>
+                <span class="recipe-parameter">Tags:</span>
+                {{ if (isset . 0) }} {{/* Hack to check if this is an array https://discourse.gohugo.io/t/how-to-check-if-a-variable-is-string-or-array/7460/7 */}}
+                    {{ $humanized := apply . "humanize" "." }}
+                    {{ $sorted := sort $humanized }}
+                    {{ range $sorted }}
+                        <span class="recipe-value">
+                            <a href="{{ ( printf "tags/%s/" ( . | urlize | lower ) ) | relLangURL }}">
+                                {{ . | humanize }}
+                            </a>
+                        </span>
+                    {{ end }}
+                {{ else }}
+                    <span class="recipe-value">
+                        <a href="{{ ( printf "tags/%s/" ( . | urlize | lower ) ) | relLangURL }}">
+                            {{ . | humanize }}
+                        </a>
+                    </span>
+                {{ end }}
+            </li>
+        {{ end }}
+    </ul>
+</section>
+{{ end }}

@@ -1,0 +1,12 @@
+name = "MinimalRecipes"
+license = "Unlicense"
+licenselink = ""
+description = "A minimalist recipe theme for Hugo"
+homepage = "https://github.com/richard-vock/minimalrecipes"
+tags = ["recipes", "cooking", "responsive", "clean"]
+features = ["favicon"]
+min_version = "0.58"
+
+[author]
+  name = "Richard Vock"
+  homepage = "https://github.com/richard-vock"

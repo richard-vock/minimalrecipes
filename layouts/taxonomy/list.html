@@ -1,0 +1,13 @@
+{{ define "content" }}
+  <section class="container list">
+    <h1 class="title">
+        {{- .Title -}}
+    </h1>
+    {{ range .Paginator.Pages }}
+    <div class="category-link">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </div>
+    {{ end }}
+    {{ partial "pagination.html" . }}
+  </section>
+{{ end }}

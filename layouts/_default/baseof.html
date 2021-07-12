@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+        {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+        {{ with .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
+
+        <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+        <link rel="canonical" href="{{ .Permalink }}">
+
+        {{ $normalize := resources.Get "css/normalize.css" | minify }}
+        <link rel="stylesheet" href="{{ $normalize.Permalink }}" media="screen">
+
+        {{ $style := resources.Get "css/style.css" | minify }}
+        <link rel="stylesheet" href="{{ $style.Permalink }}" media="screen">
+
+        <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32x32.png" | absURL }}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_16 | default "/images/favicon-16x16.png" | absURL }}" sizes="16x16">
+        {{ hugo.Generator }}
+    </head>
+    <body>
+        {{ partial "header.html" . }}
+        <main class="site">
+            {{ block "content" . }}{{ end }}
+        </main>
+        {{ partial "footer.html" . }}
+    </body>
+</html>
