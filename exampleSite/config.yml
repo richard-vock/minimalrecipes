@@ -2,7 +2,7 @@ baseURL: https://example.com
 disablePathToLower: true
 languageCode: en-us
 title: Recipes
-theme: recipes
+theme: minimalrecipes
 themesDir: ../..
 defaultcontentlanguage: en
 paginate: 1000
