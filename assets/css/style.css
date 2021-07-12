@@ -147,7 +147,7 @@ em {
 
 .site {
     max-width: 720px;
-    margin: 0 auto;
+    margin: 0 auto 3em auto;
 }
 
 /* MENU */
