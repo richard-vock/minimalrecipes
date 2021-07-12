@@ -167,6 +167,10 @@ em {
     padding: 10px 10px;
 }
 
+.menu li {
+    font-size: 0.9rem;
+}
+
 /* .menu li { */
 /*     display: block; */
 /* } */
