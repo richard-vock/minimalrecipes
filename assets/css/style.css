@@ -160,15 +160,12 @@ em {
 .menu li {
     display: inline;
     margin-right: 1.0em;
+    font-size: 0.9rem;
 }
 
 @media only screen and (max-width: 720px) {
 .menu {
     padding: 10px 10px;
-}
-
-.menu li {
-    font-size: 0.9rem;
 }
 
 /* .menu li { */
