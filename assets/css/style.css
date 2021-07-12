@@ -317,3 +317,9 @@ section {
     justify-content: space-between;
     height: 100%;
 }
+
+@media only screen and (max-width: 720px) {
+.recipe-grid {
+    grid-template-columns: 1fr;
+}
+}
