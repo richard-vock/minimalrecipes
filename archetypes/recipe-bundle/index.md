@@ -1,7 +1,6 @@
 ---
 layout: recipe
 date: {{ .Date }}
-draft: true
 title: "{{ replace .Name "-" " " | humanize | title }}"
 image: labneh.jpg
 authorName: Richard Vock
